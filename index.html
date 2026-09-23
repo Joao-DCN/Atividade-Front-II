@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grão — assinatura de café de origem</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root{
+    --brown-950:#231007;
+    --brown-900:#2c150c;
+    --brown-800:#3b1f13;
+    --cream:#f3e7d6;
+    --cream-dim:#d9c6ac;
+    --amber:#c98a3f;
+    --amber-light:#e3b06c;
+    --line:rgba(243,231,214,0.14);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--brown-950);
+    color:var(--cream);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+
+  .sans{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  img,svg{max-width:100%; display:block;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- header ---------- */
+
+  header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(35,16,7,0.86);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 32px;
+  }
+
+  .brand{
+    font-size:1.4rem;
+    letter-spacing:0.02em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .brand-mark{
+    width:14px; height:18px;
+    background:var(--amber);
+    border-radius:50% 50% 50% 4px;
+    transform:rotate(-8deg);
+    flex:none;
+  }
+
+  nav.links{
+    display:flex;
+    gap:36px;
+    font-family:inherit;
+    font-size:0.95rem;
+    color:var(--cream-dim);
+  }
+
+  nav.links a:hover{color:var(--cream);}
+
+  .btn{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display:inline-block;
+    padding:12px 26px;
+    border-radius:3px;
+    font-size:0.92rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+
+  .btn-solid{
+    background:var(--amber);
+    color:var(--brown-950);
+  }
+  .btn-solid:hover{background:var(--amber-light);}
+
+  .btn-outline{
+    border-color:var(--cream-dim);
+    color:var(--cream);
+    background:transparent;
+  }
+  .btn-outline:hover{border-color:var(--cream);}
+
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:var(--cream);
+    font-size:1.6rem;
+    cursor:pointer;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero{
+    padding:110px 0 90px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:center;
+  }
+
+  .eyebrow-plain{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color:var(--amber-light);
+    font-size:0.95rem;
+    margin-bottom:18px;
+  }
+
+  h1{
+    font-size:3.4rem;
+    line-height:1.08;
+    font-weight:400;
+    max-width:560px;
+  }
+
+  .hero p.lede{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color:var(--cream-dim);
+    font-size:1.08rem;
+    max-width:460px;
+    margin:26px 0 34px;
+  }
+
+  .hero-ctas{display:flex; gap:16px; align-items:center;}
+
+  .hero-note{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size:0.85rem;
+    color:var(--cream-dim);
+  }
+
+  /* illustration: cup made of css shapes */
+  .art{
+    position:relative;
+    height:420px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+
+  .cup{
+    position:relative;
+    width:220px;
+    height:200px;
+    background:linear-gradient(180deg, var(--brown-800), var(--brown-900));
+    border-radius:0 0 90px 90px / 0 0 60px 60px;
+    border:2px solid var(--line);
+    border-top:none;
+  }
+  .cup::before{
+    content:"";
+    position:absolute;
+    top:-26px; left:50%;
+    transform:translateX(-50%);
+    width:190px; height:52px;
+    border-radius:50%;
+    background:radial-gradient(closest-side, var(--amber-light), var(--amber) 70%, #8a5522 100%);
+  }
+  .handle{
+    position:absolute;
+    right:-42px; top:38px;
+    width:52px; height:68px;
+    border:14px solid var(--brown-800);
+    border-left:none;
+    border-radius:0 40px 40px 0;
+  }
+  .steam{
+    position:absolute;
+    top:-84px;
+    width:6px;
+    border-radius:6px;
+    background:var(--cream-dim);
+    opacity:0.55;
+    animation:rise 3.2s ease-in-out infinite;
+  }
+  .steam.s1{left:78px; height:50px; animation-delay:0s;}
+  .steam.s2{left:108px; height:66px; animation-delay:0.6s;}
+  .steam.s3{left:138px; height:50px; animation-delay:1.2s;}
+
+  @keyframes rise{
+    0%{transform:translateY(0); opacity:0;}
+    30%{opacity:0.55;}
+    100%{transform:translateY(-22px); opacity:0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .steam{animation:none; opacity:0.35;}
+  }
+
+  /* ---------- trust strip ---------- */
+
+  .trust{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .trust .wrap{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:18px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color:var(--cream-dim);
+    font-size:0.88rem;
+  }
+
+  /* ---------- benefits ---------- */
+
+  section{padding:96px 0;}
+
+  h2{
+    font-size:2.1rem;
+    font-weight:400;
+    max-width:520px;
+    margin-bottom:16px;
+  }
+
+  .section-lede{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color:var(--cream-dim);
+    max-width:520px;
+    margin-bottom:56px;
+  }
+
+  .benefits{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+
+  .benefit{
+    background:var(--brown-950);
+    padding:36px 30px;
+  }
+
+  .benefit .mark{
+    width:36px; height:36px;
+    border-radius:50%;
+    background:var(--brown-800);
+    border:1px solid var(--amber);
+    margin-bottom:22px;
+  }
+
+  .benefit h3{
+    font-size:1.2rem;
+    font-weight:400;
+    margin-bottom:10px;
+  }
+
+  .benefit p{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color:var(--cream-dim);
+    font-size:0.94rem;
+  }
+
+  /* ---------- how it works ---------- */
+
+  .how{background:var(--brown-900);}
+
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:40px;
+    counter-reset:step;
+  }
+
+  .step{position:relative; padding-left:8px;}
+
+  .step .num{
+    font-size:0.95rem;
+    color:var(--amber-light);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin-bottom:14px;
+  }
+
+  .step h3{font-size:1.15rem; font-weight:400; margin-bottom:8px;}
+
+  .step p{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color:var(--cream-dim);
+    font-size:0.94rem;
+  }
+
+  /* ---------- testimonial ---------- */
+
+  .testimonial{
+    text-align:left;
+    max-width:640px;
+  }
+
+  .quote{
+    font-size:1.7rem;
+    line-height:1.4;
+    font-style:italic;
+    margin-bottom:22px;
+  }
+
+  .who{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color:var(--cream-dim);
+    font-size:0.92rem;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .who .dot{
+    width:34px; height:34px;
+    border-radius:50%;
+    background:var(--amber);
+    flex:none;
+  }
+
+  /* ---------- cta ---------- */
+
+  .cta-section{
+    background:linear-gradient(180deg, var(--brown-900), var(--brown-950));
+    border-top:1px solid var(--line);
+    text-align:center;
+  }
+
+  .cta-section h2{margin:0 auto 14px; max-width:560px;}
+  .cta-section .section-lede{margin:0 auto 40px;}
+
+  form.subscribe{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  form.subscribe input[type="email"]{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background:var(--brown-800);
+    border:1px solid var(--line);
+    color:var(--cream);
+    padding:13px 18px;
+    border-radius:3px;
+    width:280px;
+    font-size:0.95rem;
+  }
+  form.subscribe input::placeholder{color:var(--cream-dim);}
+
+  /* ---------- footer ---------- */
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 0;
+  }
+
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color:var(--cream-dim);
+    font-size:0.85rem;
+  }
+
+  footer nav{display:flex; gap:22px;}
+  footer nav a:hover{color:var(--cream);}
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 860px){
+    .hero{grid-template-columns:1fr; padding-top:60px;}
+    h1{font-size:2.5rem;}
+    .art{order:-1; height:260px;}
+    .benefits, .steps{grid-template-columns:1fr;}
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+  }
+
+  :focus-visible{
+    outline:2px solid var(--amber-light);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Grão
+    </div>
+    <nav class="links" aria-label="Navegação principal">
+      <a href="#beneficios">Por que assinar</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#depoimento">Quem já assina</a>
+    </nav>
+    <a href="#assinar" class="btn btn-solid">Assinar agora</a>
+    <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap" style="display:contents;">
+      <div>
+        <p class="eyebrow-plain">Café de origem, torrado toda semana</p>
+        <h1>O café que chega antes de acabar o anterior</h1>
+        <p class="lede">Grãos selecionados direto de pequenos produtores brasileiros, torrados sob encomenda e entregues no seu ritmo de consumo — sem pacote parado no armário.</p>
+        <div class="hero-ctas">
+          <a href="#assinar" class="btn btn-solid">Montar minha assinatura</a>
+          <a href="#como-funciona" class="btn btn-outline">Ver como funciona</a>
+        </div>
+        <p class="hero-note sans" style="margin-top:20px;">Primeiro pacote com 20% de desconto. Cancele quando quiser.</p>
+      </div>
+      <div class="art" aria-hidden="true">
+        <div class="steam s1"></div>
+        <div class="steam s2"></div>
+        <div class="steam s3"></div>
+        <div class="cup"><div class="handle"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="wrap">
+      <span>+40 fazendas parceiras</span>
+      <span>Torra semanal, nunca em lote grande</span>
+      <span>Frete grátis acima de 2 pacotes</span>
+    </div>
+  </div>
+
+  <section id="beneficios">
+    <div class="wrap">
+      <h2>Feito para quem bebe café todo dia, não só aos domingos</h2>
+      <p class="section-lede">Cada detalhe da assinatura existe para resolver um problema real de quem gosta de café bom, mas não tem tempo de procurar.</p>
+      <div class="benefits">
+        <div class="benefit">
+          <div class="mark"></div>
+          <h3>Torra sob encomenda</h3>
+          <p>Os grãos só são torrados depois que seu pedido é confirmado, então chegam frescos, não parados em prateleira.</p>
+        </div>
+        <div class="benefit">
+          <div class="mark"></div>
+          <h3>Origem rastreável</h3>
+          <p>Cada pacote traz a fazenda, a altitude e o produtor responsável pelo lote que você está bebendo.</p>
+        </div>
+        <div class="benefit">
+          <div class="mark"></div>
+          <h3>Ritmo ajustável</h3>
+          <p>Aumente, diminua ou pause a frequência de entrega a qualquer momento, direto pelo seu painel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="how">
+    <div class="wrap">
+      <h2>Como funciona</h2>
+      <p class="section-lede">Três decisões simples e o café passa a chegar sozinho.</p>
+      <div class="steps">
+        <div class="step">
+          <p class="num">01</p>
+          <h3>Escolha o perfil de sabor</h3>
+          <p>Frutado, achocolatado ou equilibrado — você responde três perguntas rápidas sobre o que costuma gostar.</p>
+        </div>
+        <div class="step">
+          <p class="num">02</p>
+          <h3>Defina a frequência</h3>
+          <p>A cada 2, 3 ou 4 semanas, de acordo com quanto café sua casa consome.</p>
+        </div>
+        <div class="step">
+          <p class="num">03</p>
+          <h3>Receba e avalie</h3>
+          <p>Cada entrega vem com uma ficha do lote. Sua avaliação ajusta as próximas seleções.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="depoimento">
+    <div class="wrap testimonial">
+      <p class="quote">"Troquei três marcas de supermercado por uma assinatura só, e foi a primeira vez que soube de que fazenda vinha o café que eu tomava."</p>
+      <div class="who">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Renata Almeida — assinante desde 2024</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="assinar" class="cta-section">
+    <div class="wrap">
+      <h2>Comece sua assinatura hoje</h2>
+      <p class="section-lede">Deixe seu e-mail para receber o quiz de sabor e o cupom do primeiro pacote.</p>
+      <form class="subscribe" onsubmit="event.preventDefault(); this.querySelector('button').textContent='E-mail recebido';">
+        <input type="email" placeholder="seu-email@exemplo.com" required aria-label="Seu e-mail">
+        <button type="submit" class="btn btn-solid">Quero assinar</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Grão — atividade de Front-end II</span>
+    <nav>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#depoimento">Depoimentos</a>
+    </nav>
+  </div>
+</footer>
+<script> src="script.js"</script>
+</body>
+</html>
