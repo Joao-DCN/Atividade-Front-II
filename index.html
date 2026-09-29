@@ -1,12 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Git JDCN</title>
+    <title>Atividades de lógica com JavaScript - IFPI</title>
 </head>
 <body>
 
-    <script src="./script.js"></script>
+    <h1>Atividades de lógica com JavaScript</h1>
+    <p>Abra o Console do navegador (F12) para conferir o resultado.</p>
+
+
+     <script src="./questao_01.js"></script>
+     <script src="./questao_02.js"></script> 
+     <script src="./questao_03.js"></script> 
+     <script src="./questao_04.js"></script> 
+     <script src="./questao_05.js"></script> 
+     <script src="./questao_06.js"></script> 
+     <script src="./questao_07.js"></script> 
+     <script src="./questao_08.js"></script> 
+     <script src="./questao_09.js"></script> 
+     <script src="./questao_10.js"></script> 
+     <script src="./questao_11.js"></script> 
+     <script src="./questao_12.js"></script> 
+     <script src="./questao_13.js"></script> 
+     <script src="./questao_14.js"></script> 
+     <script src="./questao_15.js"></script> 
+     <script src="./questao_16.js"></script> 
+     <script src="./questao_17.js"></script> 
+     <script src="./questao_18.js"></script> 
+     <script src="./questao_19.js"></script> 
+     <script src="./questao_20.js"></script> 
+     <script src="./questao_21.js"></script> 
+     <script src="./questao_22.js"></script> 
+     <script src="./questao_23.js"></script> 
+     <script src="./questao_24.js"></script> 
+     <script src="./questao_25.js"></script> 
+     <script src="./questao_26.js"></script> 
+     <script src="./questao_27.js"></script> 
+     <script src="./questao_28.js"></script> 
+     <script src="./questao_29.js"></script> 
+     <script src="./questao_30.js"></script> 
+
+
+    <script>
+        console.log("=== BLOCO A: QUESTÕES 01 A 10 ===");
+        
+        console.log("--- Questão 01 ---");
+        console.log(classificarNumero(8));
+        console.log(classificarNumero(-3));
+        console.log(classificarNumero(0));
+
+        console.log("--- Questão 02 ---");
+        console.log(verificarParidade(12));
+        console.log(verificarParidade(7));
+        console.log(verificarParidade(0));
+
+        console.log("--- Questão 03 ---");
+        console.log(compararNumeros(9, 4));
+        console.log(compararNumeros(4, 9));
+        console.log(compararNumeros(5, 5));
+
+        console.log("--- Questão 04 ---");
+        console.log(verificarParticipacao(15));
+        console.log(verificarParticipacao(16));
+        console.log(verificarParticipacao(-1));
+
+        console.log("--- Questão 05 ---");
+        console.log(classificarNota(8));
+        console.log(classificarNota(6));
+        console.log(classificarNota(3));
+        console.log(classificarNota(-1));
+        console.log(classificarNota(11));
+
+        console.log("--- Questão 06 ---");
+        calcularCompra(150);
+        calcularCompra(200);
+        calcularCompra(250);
+        calcularCompra(-10);
+
+        console.log("--- Questão 07 ---");
+        console.log(classificarTemperatura(19));
+        console.log(classificarTemperatura(20));
+        console.log(classificarTemperatura(30));
+        console.log(classificarTemperatura(31));
+
+        console.log("--- Questão 08 ---");
+        console.log(calcular(10, 5, "+"));
+        console.log(calcular(10, 5, "-"));
+        console.log(calcular(10, 5, "*"));
+        console.log(calcular(10, 5, "/"));
+        console.log(calcular(10, 0, "/"));
+        console.log(calcular(10, 5, "%"));
+
+        console.log("--- Questão 09 ---");
+        console.log(verificarMeta(8, 80));
+        console.log(verificarMeta(8, 60));
+        console.log(verificarMeta(6, 90));
+        console.log(verificarMeta(7, 75));
+
+        console.log("--- Questão 10 ---");
+        console.log(verificarBeneficio(5, 1));
+        console.log(verificarBeneficio(10, 1));
+        console.log(verificarBeneficio(5, 3));
+        console.log(verificarBeneficio(12, 4));
+
+        console.log("=== BLOCO B: QUESTÕES 11 A 20 ===");
+
+        console.log("--- Questão 11 ---");
+        contarAteVinte();
+
+        console.log("--- Questão 12 ---");
+        contagemRegressiva();
+
+        console.log("--- Questão 13 ---");
+        mostrarTabuada(5);
+
+        console.log("--- Questão 16 ---");
+        console.log("Soma até 5:", somarAte(5));
+
+        console.log("--- Questão 17 ---");
+        mostrarPares(10);
+
+        console.log("--- Questão 18 ---");
+        console.log("Fatorial de 4:", calcularFatorial(4));
+        console.log("Fatorial de 1:", calcularFatorial(1));
+        console.log("Fatorial de 0:", calcularFatorial(0));
+
+        console.log("--- Questão 19 ---");
+        repetirMensagem("Estudando JavaScript", 3);
+
+        console.log("--- Questão 20 ---");
+        simularCrescimento(3);
+
+        console.log("--- Questão 29 ---");
+        analisarMultiplosDeTres(10);
+
+        /* 
+           AS QUESTÕES ABAIXO UTILIZAM prompt() E CAIXAS DE DIÁLOGO INTERATIVAS.
+           Para testar individualmente, descomente a linha desejada:
+        */
+
+        // console.log("Soma de 5 valores:", somarCincoValores()); // Q14
+        // console.log("Média das notas:", calcularMedia());       // Q15
+        // contarParesEImpares();                                  // Q21
+        // contarClassificacoes();                                 // Q22
+        // console.log("Maior número:", encontrarMaiorNumero());    // Q23
+        // solicitarNotaValida();                                  // Q24
+        // somarAteZero();                                         // Q25
+        // verificarCodigoDeAcesso();                              // Q26
+        // contarFaixasDeNotas();                                  // Q27
+        // iniciarMenu();                                          // Q28
+        // registrarCompra();
+       
+    </script>
 </body>
 </html>
